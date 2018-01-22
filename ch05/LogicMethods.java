@@ -13,6 +13,12 @@ public class LogicMethods
         printIsLargeOrSmall(75);
         printIsLargeOrSmall(100);
 
+        printLargest(8,20);
+        printLargest(45,45);
+        printLargest(17,55);
+        printLargest(50,11);
+
+
 
 
 
@@ -51,6 +57,28 @@ public class LogicMethods
         }
         System.out.println();
 
+    }
+
+    private static void printLargest(int number1, int number2)
+    {
+        System.out.println("printLargest");
+        System.out.println("The numbers are " + number1 + " and " + number2);
+
+        if (number1>number2)
+        {
+            System.out.println("The largest number is: " + number1);
+        }
+        else if (number2>number1)
+        {
+            System.out.println("The largest number is: " + number2);
+        }
+        else if (number1 == number2)
+        {
+            System.out.println("The numbers are equal.");
+        }
+
+
+        System.out.println();
     }
 
     }
