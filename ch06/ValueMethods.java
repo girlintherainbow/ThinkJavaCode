@@ -13,6 +13,18 @@ public class ValueMethods
         }
         boolean noDivide = isDivisible(7,4);
         System.out.println(noDivide);
+
+
+        boolean goodTriangle = isTriangle(3,3,3);
+        System.out.println(goodTriangle);
+
+        if (goodTriangle)
+        {
+            System.out.println("That's a nice triangle.");
+        }
+
+        boolean badTriangle = isTriangle(7,9,14);
+        System.out.println(badTriangle);
     }
       public static boolean isDivisible(int n, int m)
         {
@@ -24,11 +36,19 @@ public class ValueMethods
             {
                 return false;
             }
-
-
-
-
     }
+    public static boolean isTriangle(int a, int b, int c)
+    {
+        if (a + b > c)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }
 
 
