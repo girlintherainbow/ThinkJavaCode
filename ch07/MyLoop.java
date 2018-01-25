@@ -42,6 +42,9 @@ public class MyLoop
         System.out.println("Exercise 7-E: ");
         exercise7E(0);
 
+        System.out.println("Exercise 7-F: ");
+        exercise7F(1);
+
 
     }
 
@@ -109,12 +112,13 @@ public class MyLoop
 
     public static void exercise7B2(int n)
     {
-        for (n = 0; n <= 100; n = n+ 10)
+        for (n = 0; n <= 100; n = n + 10)
         {
             System.out.println(n);
         }
         System.out.println();
     }
+
     public static void exercise7B3(int n)
     {
         for (n = 100; n >= 0; n = n - 10)
@@ -123,6 +127,7 @@ public class MyLoop
         }
         System.out.println();
     }
+
     public static void exercise7C(int n)
     {
         while (n >= -100)
@@ -132,6 +137,7 @@ public class MyLoop
         }
         System.out.println();
     }
+
     public static void exercise7C1(int n)
     {
         while (n >= 100)
@@ -150,15 +156,17 @@ public class MyLoop
         }
         System.out.println();
     }
+
     public static void exercise7D(int n)
     {
-        while (n >=1)
+        while (n >= 1)
         {
             System.out.println(n);
             n = n - 1;
         }
 
     }
+
     public static void exercise7E(int n)
     {
         Scanner in = new Scanner(System.in);
@@ -167,15 +175,31 @@ public class MyLoop
         {
             System.out.println("Enter a number between 0 and 5 : ");
             number = in.nextInt();
-            if (number >= 1 && number <= 5);
-            {
-                System.out.println("Nope");
-            }
-
         }
         while (number != 0);
 
-            System.out.println("Good Job!");
+        System.out.println("Good Job!");
+
+    }
+
+    public static void exercise7F(int n)
+    {
+        final int MAX_NUMBER = 1000;
+
+        Scanner in = new Scanner(System.in);
+        int number = 0;
+        int runningTotal = number;
+        do
+        {
+            System.out.println("Enter a number: ");
+            number = in.nextInt();
+            runningTotal += number;
+            System.out.println(runningTotal);
+
+        }
+        while (number != MAX_NUMBER);
+
+        System.out.println("Input = 1000");
 
     }
 
