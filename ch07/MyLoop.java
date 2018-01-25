@@ -9,6 +9,8 @@ public class MyLoop
 
         exercise7A1(1);
 
+        System.out.println("For Loop: ");
+
         exercise7A2(10);
 
         exercise7A3(10);
@@ -18,9 +20,27 @@ public class MyLoop
 
         exercise7B1(0);
 
+        System.out.println("For Loop: ");
+
         exercise7B2(100);
 
         exercise7B3(0);
+
+        System.out.println("Exercise 7-C:");
+
+        exercise7C(100);
+
+        exercise7C1(100);
+
+        System.out.println("For Loop: ");
+
+        exercise7C2(100);
+
+        System.out.println("Exercise 7-D: ");
+        exercise7D(42);
+
+        System.out.println("Exercise 7-E: ");
+        exercise7E(0);
 
 
     }
@@ -103,4 +123,60 @@ public class MyLoop
         }
         System.out.println();
     }
+    public static void exercise7C(int n)
+    {
+        while (n >= -100)
+        {
+            System.out.println(n);
+            n = n - 8;
+        }
+        System.out.println();
+    }
+    public static void exercise7C1(int n)
+    {
+        while (n >= 100)
+        {
+            System.out.println(n);
+            n = n - 8;
+        }
+        System.out.println();
+    }
+
+    public static void exercise7C2(int n)
+    {
+        for (n = 100; n >= -100; n = n - 8)
+        {
+            System.out.println(n);
+        }
+        System.out.println();
+    }
+    public static void exercise7D(int n)
+    {
+        while (n >=1)
+        {
+            System.out.println(n);
+            n = n - 1;
+        }
+
+    }
+    public static void exercise7E(int n)
+    {
+        Scanner in = new Scanner(System.in);
+        int number;
+        do
+        {
+            System.out.println("Enter a number between 0 and 5 : ");
+            number = in.nextInt();
+            if (number >= 1 && number <= 5);
+            {
+                System.out.println("Nope");
+            }
+
+        }
+        while (number != 0);
+
+            System.out.println("Good Job!");
+
+    }
+
 }
