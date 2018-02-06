@@ -33,7 +33,6 @@ public class ShoppingList
             }
             else if (command.equalsIgnoreCase("Print"))
             {
-                Collections.sort(shoppingCart);
                 printList();
             }
             else if (command.equalsIgnoreCase("Clear"))
@@ -49,6 +48,10 @@ public class ShoppingList
                 System.out.println("Here is your receipt: ");
                 printList();
             }
+            else if (command.equalsIgnoreCase("Sort"))
+            {
+              sort();
+            }
             else
             {
                 System.out.println("Command not recognized. Please try again.");
@@ -56,6 +59,12 @@ public class ShoppingList
         }
         while (!command.equalsIgnoreCase("Exit"));
         System.out.println("Thank you for shopping! Have a nice day!");
+    }
+    private void sort()
+    {
+        Collections.sort(shoppingCart);
+        System.out.println("Here is your sorted list: ");
+        printList();
     }
 
     private void findItem()
@@ -83,7 +92,6 @@ public class ShoppingList
         {
             for (int i = 0; i < shoppingCart.size(); i++)
             {
-                Collections.sort(shoppingCart);
                 System.out.println(i + " : " + shoppingCart.get(i));
             }
         }
