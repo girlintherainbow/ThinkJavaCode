@@ -1,12 +1,10 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
 
 public class ShoppingList
 {
-    private int total = 0;
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<String> shoppingCart = new ArrayList<>();
 
@@ -35,6 +33,7 @@ public class ShoppingList
             }
             else if (command.equalsIgnoreCase("Print"))
             {
+                Collections.sort(shoppingCart);
                 printList();
             }
             else if (command.equalsIgnoreCase("Clear"))
@@ -44,6 +43,11 @@ public class ShoppingList
             else if (command.equalsIgnoreCase("Find"))
             {
                 findItem();
+            }
+            else if (command.equalsIgnoreCase("Exit"))
+            {
+                System.out.println("Here is your receipt: ");
+                printList();
             }
             else
             {
@@ -68,14 +72,21 @@ public class ShoppingList
             System.out.println("Item not found");
 
     }
+
     private void printList()
     {
-        for (int i = 0; i < shoppingCart.size(); i++)
+        if (shoppingCart.size()==0)
         {
-            Collections.sort(shoppingCart);
-            System.out.println(i + " " + shoppingCart.get(i));
+            System.out.println("Your cart is empty");
         }
-        System.out.println();
+        else
+        {
+            for (int i = 0; i < shoppingCart.size(); i++)
+            {
+                Collections.sort(shoppingCart);
+                System.out.println(i + " : " + shoppingCart.get(i));
+            }
+        }
     }
 
     private void clearCart()
@@ -86,7 +97,7 @@ public class ShoppingList
 
     private void addTo()
     {
-        System.out.println("What would you like to add to your cart?");
+        System.out.println("Add to cart: ");
         String item = scanner.nextLine();
         shoppingCart.add(item);
         System.out.println(item + " added to cart.");
@@ -95,16 +106,12 @@ public class ShoppingList
 
     private void removeFrom()
     {
-        System.out.println("Enter position on list to remove item: ");
-        String spot = scanner.nextLine();
+        System.out.println("Enter number of item to remove: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.println("Enter item to remove " + spot);
-        String item = scanner.nextLine();
+        System.out.println(shoppingCart.get(index)+ " removed from cart.");
+        shoppingCart.remove(index);
 
-        for (int i = 0; i < shoppingCart.size(); i++)
-        {
-            shoppingCart.remove(item);
-            System.out.println(item + " removed from spot " + i + " in cart.");
-        }
     }
 }
