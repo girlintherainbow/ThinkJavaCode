@@ -1,7 +1,6 @@
 package com.company;
 
-import java.util.TreeMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class PetHotel
 {
@@ -34,31 +33,40 @@ public class PetHotel
             }
             else if (command.equalsIgnoreCase("CheckOut"))
             {
-                String petName = words[1];
-                int roomNumber = Integer.parseInt(words[2]);
 
-                checkOut(petName, roomNumber);
+                int roomNumber = Integer.parseInt(words[1]);
+
+                checkOut(roomNumber);
             }
             else if (command.equalsIgnoreCase("Move"))
             {
-                String petName = words[1];
-                int fromRoomNumber = Integer.parseInt(words[2]);
-                int toRoomNumber = Integer.parseInt(words[3]);
-                move(petName, fromRoomNumber, toRoomNumber);
+
+                int fromRoomNumber = Integer.parseInt(words[1]);
+                int toRoomNumber = Integer.parseInt(words[2]);
+                move(fromRoomNumber, toRoomNumber);
             }
             else if (command.equalsIgnoreCase("Occupancy"))
             {
+                occupancy();
 
             }
             else if (command.equalsIgnoreCase("CloseForSeason"))
             {
                 closeForSeason();
             }
+            else if (command.equalsIgnoreCase("Exit"))
+            {
+                System.out.println("Bye, bye!");
+            }
             else
-                System.out.println("I'm sorry, I don't recognize that command.");
-        }
+            {
+                System.out.println("Command not recognized");
 
+            }
+
+        }
         while (!command.equalsIgnoreCase("Exit"));
+
     }
 
     private void checkIn(String petName, Integer roomNumber)
@@ -93,37 +101,40 @@ public class PetHotel
         return empty;
     }
 
-    private void checkOut(String petName, Integer roomNumber)
+    private void checkOut(int roomNumber)
     {
-        hotelRoom.remove(roomNumber, petName);
-        if (roomNumber >= 100 && roomNumber <= 109)
-        {
-            System.out.println(petName + " checked out of " + roomNumber);
-
-        }
-        else
-            System.out.println("No one was in that room.");
-
+       String petName = hotelRoom.remove(roomNumber);
+        System.out.println( petName + " has checked out");
     }
 
-    private void move(String petName, Integer fromRoomNumber, Integer toRoomNumber)
+    private void move(int fromRoomNumber, int toRoomNumber)
     {
-        hotelRoom.remove(petName, fromRoomNumber);
-        hotelRoom.put(toRoomNumber, petName);
+       if (isRoomEmpty(toRoomNumber))
+       {
+           String petName = hotelRoom.remove(fromRoomNumber);
+           hotelRoom.put(toRoomNumber,petName);
+           System.out.println(petName + " moved from room " + fromRoomNumber + " to room " + toRoomNumber);
+       }
+       else
+       {
+           System.out.println("This room is already occupied");
+       }
 
-        if (fromRoomNumber >= 100 && fromRoomNumber <= 109)
-        {
-            if (toRoomNumber >= 100 && toRoomNumber <= 109)
-            {
-                System.out.println(petName + " moved from " + fromRoomNumber + " to " + toRoomNumber);
-            }
 
-        }
     }
 
     private void occupancy()
     {
+        Set<Map.Entry<Integer, String>> entries = hotelRoom.entrySet();
 
+        for (Map.Entry<Integer, String> list : entries)
+        {
+            int roomNumber = list.getKey();
+            String petName = list.getValue();
+
+            System.out.println("Room: " + roomNumber + "   " + "Pet: " + petName);
+
+        }
 
     }
 
